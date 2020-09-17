@@ -2,7 +2,7 @@
 
 You do not need to import or install anything.
 
-I left example usage in the input and output files.
+I left example usage in input and output files.
 
 If you want to try out yourself, delete all lines in in both files. Post your variables into input file, and it will generate getters and setters to output file.
 
