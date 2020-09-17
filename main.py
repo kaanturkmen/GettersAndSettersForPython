@@ -18,11 +18,12 @@ def read_input():
 
 def create_output():
     with open("output.txt", "w") as f:
-        f.write("----- Getters & Setters -----\n\n")
+        f.write("----- Getters -----\n\n")
         for variable in user_variables:
             f.write(f"def get_{variable}(self):\n")
             f.write(f"\treturn self.{variable}\n\n")
 
+        f.write("----- Setters -----\n\n")
         for variable in user_variables:
             f.write(f"def set_{variable}(self, {variable}):\n")
             f.write(f"\tself.{variable} = {variable}\n\n")
