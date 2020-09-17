@@ -6,9 +6,10 @@ Just post your variables into input file, and it will generate getters and sette
 
 All supported variable syntaxes:
 
-variable =
-variable=
-variable = x
-variable=x
+![syntax](https://user-images.githubusercontent.com/63169561/93536532-e356b880-f951-11ea-8e45-ff661b2cd8c7.png)
 
 P.S. x represents any other variable, class, word etc.
+
+
+
+
