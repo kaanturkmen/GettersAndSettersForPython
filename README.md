@@ -2,7 +2,9 @@
 
 You do not need to import or install anything.
 
-Just post your variables into input file, and it will generate getters and setters to output file.
+I left example usage in the input and output files.
+
+If you want to try out yourself, delete all lines in in both files. Post your variables into input file, and it will generate getters and setters to output file.
 
 All supported variable syntaxes:
 
