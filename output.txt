@@ -1,88 +1,87 @@
------ Getters -----
+#--------- Constructor --------
+
+def __init__(resolution, text_colour, text_background_colour, alternative_colour, words_from_user, display_words_from_user, context_location, user_input_text, display_user_input_text, name_of_context):
+
+    self.resolution = resolution
+    self._text_colour = text_colour
+    self.text_background_colour = text_background_colour
+    self.alternative_colour = alternative_colour
+    self.__words_from_user = words_from_user
+    self.display_words_from_user = display_words_from_user
+    self.context_location = context_location
+    self.user_input_text = user_input_text
+    self.display_user_input_text = display_user_input_text
+    self.__name_of_context = name_of_context
+
+
+#----------- Getters ----------
 
 def get_resolution(self):
-	return self.resolution
+    return self.resolution
 
-def get_text_color(self):
-	return self.text_color
+def get_text_colour(self):
+    return self._text_colour
 
-def get_text_background_color(self):
-	return self.text_background_color
+def get_text_background_colour(self):
+    return self.text_background_colour
 
-def get_alternative_color(self):
-	return self.alternative_color
+def get_alternative_colour(self):
+    return self.alternative_colour
 
 def get_words_from_user(self):
-	return self.words_from_user
+    return self.__words_from_user
 
 def get_display_words_from_user(self):
-	return self.display_words_from_user
+    return self.display_words_from_user
 
-def get_context_location_boolean(self):
-	return self.context_location_boolean
-
-def get_index_of_current_context(self):
-	return self.index_of_current_context
-
-def get_index_of_current_sketch(self):
-	return self.index_of_current_sketch
-
-def get_image_per_context(self):
-	return self.image_per_context
-
-def get_image_per_sketch(self):
-	return self.image_per_sketch
+def get_context_location(self):
+    return self.context_location
 
 def get_user_input_text(self):
-	return self.user_input_text
+    return self.user_input_text
 
 def get_display_user_input_text(self):
-	return self.display_user_input_text
+    return self.display_user_input_text
 
 def get_name_of_context(self):
-	return self.name_of_context
+    return self.__name_of_context
 
------ Setters -----
+
+
+#----------- Setters ----------
 
 def set_resolution(self, resolution):
-	self.resolution = resolution
+    self.resolution = resolution
 
-def set_text_color(self, text_color):
-	self.text_color = text_color
+def set_text_colour(self, text_colour):
+    self._text_colour = text_colour
 
-def set_text_background_color(self, text_background_color):
-	self.text_background_color = text_background_color
+def set_text_background_colour(self, text_background_colour):
+    self.text_background_colour = text_background_colour
 
-def set_alternative_color(self, alternative_color):
-	self.alternative_color = alternative_color
+def set_alternative_colour(self, alternative_colour):
+    self.alternative_colour = alternative_colour
 
 def set_words_from_user(self, words_from_user):
-	self.words_from_user = words_from_user
+    self.__words_from_user = words_from_user
 
 def set_display_words_from_user(self, display_words_from_user):
-	self.display_words_from_user = display_words_from_user
+    self.display_words_from_user = display_words_from_user
 
-def set_context_location_boolean(self, context_location_boolean):
-	self.context_location_boolean = context_location_boolean
-
-def set_index_of_current_context(self, index_of_current_context):
-	self.index_of_current_context = index_of_current_context
-
-def set_index_of_current_sketch(self, index_of_current_sketch):
-	self.index_of_current_sketch = index_of_current_sketch
-
-def set_image_per_context(self, image_per_context):
-	self.image_per_context = image_per_context
-
-def set_image_per_sketch(self, image_per_sketch):
-	self.image_per_sketch = image_per_sketch
+def set_context_location(self, context_location):
+    self.context_location = context_location
 
 def set_user_input_text(self, user_input_text):
-	self.user_input_text = user_input_text
+    self.user_input_text = user_input_text
 
 def set_display_user_input_text(self, display_user_input_text):
-	self.display_user_input_text = display_user_input_text
+    self.display_user_input_text = display_user_input_text
 
 def set_name_of_context(self, name_of_context):
-	self.name_of_context = name_of_context
+    self.__name_of_context = name_of_context
+
+
+
+#------------------------------
+
 
