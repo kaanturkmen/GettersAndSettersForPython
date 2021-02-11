@@ -1,6 +1,8 @@
 # GettersAndSettersForPython
 
-You do not need to import or install anything.
+This project is created for helping python developers to create constructor, getters and setters.
+
+GettersAndSettersForPython does not require any external libraries or installation.
 
 An examples has been left in the input and output files.
 
@@ -8,7 +10,12 @@ If you want to try it out yourself, delete all lines in in both files. Put your 
 
 All supported variable syntaxes:
 
-![syntax](https://user-images.githubusercontent.com/63169561/93536532-e356b880-f951-11ea-8e45-ff661b2cd8c7.png)
+```
+attribute = 
+attribute= 
+attribute = x
+attribute=x
+```
 
 P.S. x represents any other attribute, class, word etc.
 
