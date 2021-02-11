@@ -21,6 +21,8 @@
     In truth, only non-public attributes warrant a getter and a setter. 
     An option is present to allow creation of getters and setters for
        all attributes, or only those that are not public.
+
+    Updated 2021-07-11 to add property decorators as a second option.
 """
 import sys
 
@@ -84,8 +86,9 @@ def create_output(class_attributes, output_file, do_for_all_attributes):
     """
     try:
         # Added 2021-02-07 to create a Constructor
-        output_file.write("#--------- Constructor --------\n\n")
-        output_file.write("def __init__(")
+        output_file.write("class Something:\n\n")
+        output_file.write("    #--------- Constructor --------\n")
+        output_file.write("    def __init__(")
         counter = 0
         # output Constructor declaration
         for each_var in class_attributes:
@@ -96,29 +99,86 @@ def create_output(class_attributes, output_file, do_for_all_attributes):
                 output_file.write(each_var[1] + ", ")
         # output initialisation of Attributes
         for each_var in class_attributes:
-            output_file.write("    self." + each_var[0] + " = " + each_var[1] + "\n")
+            output_file.write("        self." + each_var[0] + " = " + each_var[1] + "\n")
         output_file.write("\n\n")
 
         # output Accessors per Attribute
-        output_file.write("#----------- Getters ----------\n\n")
+        output_file.write("    #----------- Getters ----------\n")
         for each_var in class_attributes:
             if do_for_all_attributes:
-                output_file.write(f"def get_{each_var[1]}(self):\n")
-                output_file.write(f"    return self.{each_var[0]}\n\n")
+                output_file.write(f"    def get_{each_var[1]}(self):\n")
+                output_file.write(f"        return self.{each_var[0]}\n\n")
             elif (each_var[0] != each_var[1]):
-                output_file.write(f"def get_{each_var[1]}(self):\n")
-                output_file.write(f"    return self.{each_var[0]}\n\n")
+                output_file.write(f"    def get_{each_var[1]}(self):\n")
+                output_file.write(f"        return self.{each_var[0]}\n\n")
         output_file.write("\n\n")
 
         # output Mutators per Attribute
-        output_file.write("#----------- Setters ----------\n\n")
+        output_file.write("    #----------- Setters ----------\n")
         for each_var in class_attributes:
             if do_for_all_attributes:
-                output_file.write(f"def set_{each_var[1]}(self, {each_var[1]}):\n")
-                output_file.write(f"    self.{each_var[0]} = {each_var[1]}\n\n")
+                output_file.write(f"    def set_{each_var[1]}(self, {each_var[1]}):\n")
+                output_file.write(f"        self.{each_var[0]} = {each_var[1]}\n\n")
             elif (each_var[0] != each_var[1]):
-                output_file.write(f"def set_{each_var[1]}(self, {each_var[1]}):\n")
-                output_file.write(f"    self.{each_var[0]} = {each_var[1]}\n\n")
+                output_file.write(f"    def set_{each_var[1]}(self, {each_var[1]}):\n")
+                output_file.write(f"        self.{each_var[0]} = {each_var[1]}\n\n")
+        output_file.write("\n\n")
+
+        # line to show end of output
+        output_file.write(("#" + "-" * 30) + "\n\n\n")
+    except IOError as err:
+        print(f"Cannot write to the file: {output_file_name}.")
+        sys.exit()
+
+def create_property_decorator_output(class_attributes, output_file, do_for_all_attributes):
+    """ Write out the constructor, and those getters and setters required
+    according to the arguments supplied. Add property decorators as required.
+    """
+    try:
+        # Set separator.
+        output_file.write("\n#" + ("=" * 30) + "\n")
+        output_file.write("# Use the code above or the code below, depending ")
+        output_file.write("on whether you want to use property decorators as below or not.\n")
+        output_file.write("#" + ("=" * 30) + "\n\n")
+
+        # Added 2021-02-07 to create a Constructor
+        output_file.write("class Something:\n\n")
+        output_file.write("    #--------- Constructor --------\n")
+        output_file.write("    def __init__(")
+        counter = 0
+        # output Constructor declaration
+        for each_var in class_attributes:
+            counter += 1
+            if counter == len(class_attributes):
+                output_file.write(each_var[1] + "):\n\n")
+            else:
+                output_file.write(each_var[1] + ", ")
+        # output initialisation of Attributes
+        for each_var in class_attributes:
+            output_file.write("        self." + each_var[1] + " = " + each_var[1] )
+            output_file.write("  # This is not an attribute assignment; it calls the setter.\n")
+        output_file.write("\n\n")
+
+        # output Accessors per Attribute
+        output_file.write("    #----------- Getters ----------\n")
+        for each_var in class_attributes:
+            if do_for_all_attributes:
+                output_file.write(f"    @property\n    def {each_var[1]}(self):\n")
+                output_file.write(f"        return self.{each_var[0]}\n\n")
+            elif (each_var[0] != each_var[1]):
+                output_file.write(f"    @property\n    def {each_var[1]}(self):\n")
+                output_file.write(f"        return self.{each_var[0]}\n\n")
+        output_file.write("\n\n")
+
+        # output Mutators per Attribute
+        output_file.write("    #----------- Setters ----------\n")
+        for each_var in class_attributes:
+            if do_for_all_attributes:
+                output_file.write(f"    @{each_var[1]}.setter\n    def {each_var[1]}(self, value):\n")
+                output_file.write(f"        self.{each_var[0]} = value\n\n")
+            elif (each_var[0] != each_var[1]):
+                output_file.write(f"    @{each_var[1]}.setter\n    def set_{each_var[1]}(self, value):\n")
+                output_file.write(f"        self.{each_var[0]} = value\n\n")
         output_file.write("\n\n")
 
         # line to show end of output
@@ -150,8 +210,12 @@ def main():
     input_file, output_file = open_files(INPUT_FILE_NAME, OUTPUT_FILE_NAME)
     class_attributes = read_input(input_file)
     create_output(class_attributes, output_file, DO_FOR_ALL_ATTRIBUTES)
+    
+    #Add property decorators as an alternate option.
+    create_property_decorator_output(class_attributes, output_file, DO_FOR_ALL_ATTRIBUTES)
     clean_up_and_close(input_file, output_file)
     print("\nCreation of Constructor, Accessors, and Mutators complete!")
+
 
 if __name__ == '__main__':
     main()
