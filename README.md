@@ -2,15 +2,15 @@
 
 You do not need to import or install anything.
 
-I left example usage in input and output files.
+An examples has been left in the input and output files.
 
-If you want to try out yourself, delete all lines in in both files. Post your variables into input file, and it will generate getters and setters to output file.
+If you want to try it out yourself, delete all lines in in both files. Put your attribute names into the input file, and it will generate a constructor, getters, and setters and write them to the output file.
 
 All supported variable syntaxes:
 
 ![syntax](https://user-images.githubusercontent.com/63169561/93536532-e356b880-f951-11ea-8e45-ff661b2cd8c7.png)
 
-P.S. x represents any other variable, class, word etc.
+P.S. x represents any other attribute, class, word etc.
 
 
 
