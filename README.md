@@ -8,9 +8,12 @@
 python3 create_Constructor_Getters_Setters.py
 ```
 
-P.S. Script will generate output in two different styles.
+P.S. Example usage can be found in the input and output files. Also, this python script do not require to import or install any additional packages / applications.
 
 # Output Styles
+
+Running the script will generate output in two different styles.
+
 1. The first style of output provides getters and setters for all attributes, regardless of whether they are public, protected, or private. NB Setters are really only required for non-public (i.e. protected or private) attributes. There is thus an option (found in the main() function) to change behaviour of this first style so that the script only outputs getters and setters for those non-public attributes. (Public attributes may be addressed directly from outside the class.)
 
 2. The second style of output provides getters and setters only for those non-public attributes, and it provides them using property decorators. This style may not be used to provide setters and getters for public attributes, so that option is not available for the second style.
